@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 6f;
     public float jumpForce = 1f;
-    public float gravity = -9.81f;
+    public float gravity = 0;
     public float crouchHeight = 0.5f;
     public float reachDistance = 5f;
     public GameObject blockPrefab;
@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, reachDistance))
         {
             GameObject hitObject = hit.collider.gameObject;
-            print(hitObject);
             if (hitObject != highlightedBlock && hitObject.CompareTag("Block"))
             {
                 // Unhighlight previous block

@@ -152,11 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e1195ef521bdf4eb4010577bf6ad33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 300
-  width: 300
-  maxheight: 300
-  scale: 15
-  blockPrefab: {fileID: 8001813125735938947, guid: 6cdb506ab7117674b93892df98a4c72b, type: 3}
+  length: 250
+  width: 250
+  maxheight: 250
+  scale: 25
+  blockPrefab: {fileID: 438817836}
+  player: {fileID: 1451461722}
+  viewDistance: 50
+  chunkSize: 16
 --- !u!4 &51921013
 Transform:
   m_ObjectHideFlags: 0
@@ -172,6 +175,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &438817836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8001813125735938947, guid: 6cdb506ab7117674b93892df98a4c72b, type: 3}
+  m_PrefabInstance: {fileID: 8001813123952186161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &625093674
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +245,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 30
+  far clip plane: 150
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -379,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -387,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -419,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9512198, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9512198, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_CullingMode

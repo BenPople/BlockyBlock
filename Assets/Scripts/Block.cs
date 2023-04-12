@@ -9,16 +9,16 @@ public class Block
     public BlockType blockType;
     public bool isSolid;
 
-    public Block(GameObject blockObj, BlockType type)
+    public Block(BlockType type)
     {
         blockType = type;
         isSolid = type != BlockType.Air;
 
         Material blockMaterial = GetMaterialForBlockType(type);
-        blockObj.GetComponent<MeshRenderer>().material = blockMaterial;
+        //blockObj.GetComponent<MeshRenderer>().material = blockMaterial;
     }
 
-    Material GetMaterialForBlockType(BlockType type)
+    public static Material GetMaterialForBlockType(BlockType type)
     {
         switch (type)
         {
