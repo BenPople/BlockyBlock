@@ -10,7 +10,7 @@ public class TerrainGenerator : MonoBehaviour
     public float scale = 20f;
     public GameObject blockPrefab;
     public Transform player;
-    public int viewDistance = 50;
+    public int viewDistance = 100;
     public int chunkSize = 16;
 
 
@@ -22,6 +22,7 @@ public class TerrainGenerator : MonoBehaviour
         blocks = new Block[length, width, maxheight];
         activeChunks = new Dictionary<Vector3Int, GameObject>();
         GenerateTerrain();
+        PlacePlayer();
     }
 
     private void Update()
@@ -31,20 +32,46 @@ public class TerrainGenerator : MonoBehaviour
 
     void GenerateTerrain()
     {
+        print("Generating Terrain...");
         for (int currLength = 0; currLength < length; currLength++)
         {
             for (int currWidth = 0; currWidth < width; currWidth++)
             {
                 int height = CalculateHeight(currLength, currWidth);
-                blocks[currLength, currWidth, height] = new Block(GetBlockType(height));
 
-                for (int i = 0; i < height; i++)
+                for (int i = -64; i < height; i++)
                 {
-                    int newHeight = i;
-                    blocks[currLength, currWidth, newHeight] = new Block(GetBlockType(newHeight));
+                    int newHeight = i + 64;
+                    blocks[currLength, currWidth, newHeight] = new Block(GetBlockType(i));
                 }
             }
         }
+    }
+
+    void PlacePlayer(){
+        PreLoadChunks();
+        player.position = new Vector3((length/2) - 8, 50, (width/2) - 8);
+        print($"Player spanwed at {player.position}");
+    }
+
+    void PreLoadChunks(){
+        int currentChunkX = Mathf.FloorToInt(((length/2) - 8) / chunkSize);
+        int currentChunkZ = Mathf.FloorToInt(((width/2) - 8) / chunkSize);
+
+        for (int xOffset = -1; xOffset <= 1; xOffset++)
+        {
+            for (int zOffset = -1; zOffset <= 1; zOffset++)
+            {
+                Vector3Int chunkPosition = new Vector3Int(currentChunkX + xOffset, 0, currentChunkZ + zOffset);
+
+                if (IsChunkInViewDistance(chunkPosition))
+                {
+                    GameObject chunk = CreateChunk(chunkPosition);
+                    activeChunks.Add(chunkPosition, chunk);
+                }
+            }
+        }
+        print($"Preloaded player chunks at {currentChunkX},{currentChunkZ}");
     }
 
     void LoadChunksInViewDistance()

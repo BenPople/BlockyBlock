@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e1195ef521bdf4eb4010577bf6ad33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 250
-  width: 250
-  maxheight: 250
-  scale: 25
+  length: 64
+  width: 64
+  maxheight: 65
+  scale: 6
   blockPrefab: {fileID: 438817836}
   player: {fileID: 1451461722}
   viewDistance: 50
@@ -391,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 409022, guid: a9323d210b56a654eabbe93d3969ccaa, type: 3}
       propertyPath: m_LocalPosition.z
